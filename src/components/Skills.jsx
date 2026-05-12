@@ -65,8 +65,8 @@ const Skills = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10" 
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem' }}
+          className="flex flex-wrap justify-center gap-10" 
+          style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2.5rem' }}
         >
           {skillCategories.map((category, idx) => (
             <motion.div

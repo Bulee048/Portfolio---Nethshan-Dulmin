@@ -75,7 +75,8 @@ const ProjectCard = ({ project, index }) => (
           </motion.a>
           <motion.a 
             whileHover={{ scale: 1.2, rotate: -10 }}
-            href="#" 
+            href={project.github} 
+            target="_blank"
             className="text-secondary-color hover:text-white transition-colors"
           >
             <ExternalLink size={22} />

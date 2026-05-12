@@ -57,7 +57,7 @@ const Navbar = () => {
             style={{ display: 'flex', gap: '1rem' }}
           >
             <a href="https://github.com/Bulee048" target="_blank" className="hover:text-primary-color transition-colors" style={{ color: 'white' }}><FaGithub size={20} /></a>
-            <a href="#" className="hover:text-primary-color transition-colors" style={{ color: 'white' }}><FaLinkedin size={20} /></a>
+            <a href="https://www.linkedin.com/in/nethshan-dulmin-bulegoda-003589268" target="_blank" className="hover:text-primary-color transition-colors" style={{ color: 'white' }}><FaLinkedin size={20} /></a>
           </motion.div>
         </div>
 

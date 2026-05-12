@@ -79,20 +79,24 @@ const Hero = () => {
             className="flex flex-wrap justify-center gap-6" 
             style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem' }}
           >
-            <motion.button 
-              className="btn-primary"
-              whileHover={{ scale: 1.05, boxShadow: '0 0 25px rgba(59, 130, 246, 0.5)' }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Explore Projects <ArrowRight size={22} />
-            </motion.button>
-            <motion.button 
-              className="btn-secondary"
-              whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.1)' }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Download Resume <Download size={22} />
-            </motion.button>
+            <a href="#projects">
+              <motion.button 
+                className="btn-primary"
+                whileHover={{ scale: 1.05, boxShadow: '0 0 25px rgba(59, 130, 246, 0.5)' }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Explore Projects <ArrowRight size={22} />
+              </motion.button>
+            </a>
+            <a href="/CV.pdf" download="Nethshan_CV.pdf">
+              <motion.button 
+                className="btn-secondary"
+                whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.1)' }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Download Resume <Download size={22} />
+              </motion.button>
+            </a>
           </motion.div>
         </motion.div>
       </div>

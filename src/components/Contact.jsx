@@ -81,7 +81,7 @@ const Contact = () => {
               </motion.a>
 
               <motion.a 
-                href="https://linkedin.com/in/nethshan-dulmin-bulegoda"
+                href="https://www.linkedin.com/in/nethshan-dulmin-bulegoda-003589268"
                 target="_blank"
                 whileHover={{ x: 10, backgroundColor: 'rgba(59, 130, 246, 0.1)' }}
                 className="glass p-8 rounded-3xl flex justify-between items-center group transition-colors"

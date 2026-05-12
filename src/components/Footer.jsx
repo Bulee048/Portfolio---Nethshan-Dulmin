@@ -9,14 +9,10 @@ const Footer = () => {
           NETHSHAN<span className="text-gradient">.</span>
         </div>
         
-        <div className="text-secondary-color text-sm flex items-center gap-2" style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          Built with <Heart size={14} className="text-red-500 fill-red-500" /> using React & Framer Motion
-        </div>
-        
         <div className="flex gap-8 text-sm font-medium text-secondary-color" style={{ display: 'flex', gap: '2rem', fontSize: '0.875rem' }}>
           <a href="#" className="hover:text-white transition-colors" style={{ textDecoration: 'none', color: 'inherit' }}>Twitter</a>
           <a href="https://github.com/Bulee048" className="hover:text-white transition-colors" style={{ textDecoration: 'none', color: 'inherit' }}>GitHub</a>
-          <a href="#" className="hover:text-white transition-colors" style={{ textDecoration: 'none', color: 'inherit' }}>LinkedIn</a>
+          <a href="https://www.linkedin.com/in/nethshan-dulmin-bulegoda-003589268" className="hover:text-white transition-colors" style={{ textDecoration: 'none', color: 'inherit' }}>LinkedIn</a>
         </div>
       </div>
       
