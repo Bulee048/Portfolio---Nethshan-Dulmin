@@ -50,7 +50,7 @@ const milestones = [
 
 const Journey = () => {
   return (
-    <section id="journey" style={{ padding: '120px 0', background: 'rgba(8,8,12,0.6)' }}>
+    <section id="journey" style={{ padding: '120px 0', background: 'rgba(8,8,12,0.6)', overflow: 'hidden' }}>
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -64,113 +64,186 @@ const Journey = () => {
           </p>
         </motion.div>
 
-        <div style={{ maxWidth: '760px', margin: '0 auto', position: 'relative' }}>
-          {/* Vertical spine line */}
+        <div style={{ position: 'relative', maxWidth: '1000px', margin: '0 auto' }}>
+          {/* Central Vertical Line with Growth Animation */}
+          <motion.div 
+            initial={{ height: 0 }}
+            whileInView={{ height: '100%' }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+            style={{
+              position: 'absolute',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              top: '0',
+              width: '2px',
+              background: 'linear-gradient(to bottom, transparent, var(--primary-color), var(--secondary-color), var(--primary-color), transparent)',
+              opacity: 0.3,
+              display: 'none', // Hidden on mobile
+              transformOrigin: 'top'
+            }} className="md:block" />
+
+          {/* Mobile Vertical Line */}
           <div style={{
             position: 'absolute',
-            left: '28px',
-            top: '8px',
-            bottom: '8px',
+            left: '20px',
+            top: '0',
+            bottom: '0',
             width: '2px',
-            background: 'linear-gradient(to bottom, #3b82f6, #a855f7, #10b981, #f59e0b, #ef4444, #22c55e)',
-            opacity: 0.25,
-            borderRadius: '999px',
-          }} />
+            background: 'linear-gradient(to bottom, var(--primary-color), var(--secondary-color))',
+            opacity: 0.2,
+          }} className="md:hidden" />
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
             {milestones.map((m, i) => {
               const Icon = m.icon;
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: '-60px' }}
-                  transition={{ duration: 0.6, delay: i * 0.1 }}
-                  style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}
-                >
-                  {/* Icon circle */}
-                  <div style={{
-                    width: '58px',
-                    height: '58px',
-                    borderRadius: '50%',
-                    background: `${m.color}15`,
-                    border: `2px solid ${m.color}45`,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0,
-                    position: 'relative',
-                    zIndex: 1,
-                    color: m.color,
-                    boxShadow: m.isLast ? `0 0 20px ${m.color}30` : 'none',
-                  }}>
-                    <Icon size={22} strokeWidth={1.8} />
+              const isEven = i % 2 === 0;
 
-                    {/* Pulsing ring for last item */}
-                    {m.isLast && (
-                      <motion.div
-                        animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
-                        transition={{ duration: 2, repeat: Infinity }}
+              return (
+                <div key={i} style={{ 
+                  display: 'flex', 
+                  justifyContent: 'center', 
+                  alignItems: 'center', 
+                  position: 'relative',
+                  width: '100%'
+                }}>
+                  {/* Timeline Dot with Delay */}
+                  <motion.div 
+                    initial={{ scale: 0, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ 
+                      type: 'spring', 
+                      stiffness: 260, 
+                      damping: 20,
+                      delay: 0.2 
+                    }}
+                    style={{
+                      position: 'absolute',
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      width: '16px',
+                      height: '16px',
+                      borderRadius: '50%',
+                      background: m.color,
+                      border: '4px solid var(--bg-color)',
+                      boxShadow: `0 0 15px ${m.color}`,
+                      zIndex: 10,
+                      display: 'none'
+                    }} className="md:block" />
+
+                  {/* Mobile Timeline Dot */}
+                  <div style={{
+                    position: 'absolute',
+                    left: '13px',
+                    width: '16px',
+                    height: '16px',
+                    borderRadius: '50%',
+                    background: m.color,
+                    border: '4px solid var(--bg-color)',
+                    zIndex: 10,
+                  }} className="md:hidden" />
+
+                  <motion.div
+                    initial={{ opacity: 0, x: isEven ? -100 : 100, scale: 0.8 }}
+                    whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                    viewport={{ once: true, margin: '-100px' }}
+                    transition={{ 
+                      duration: 0.8, 
+                      delay: 0.1,
+                      type: 'spring',
+                      bounce: 0.3
+                    }}
+                    style={{
+                      width: '100%',
+                      display: 'flex',
+                      justifyContent: isEven ? 'flex-end' : 'flex-start',
+                      paddingLeft: '50px', // Mobile padding
+                      paddingRight: '0'
+                    }}
+                    className="md:px-0"
+                  >
+                    <motion.div
+                      whileHover={{ y: -5, boxShadow: `0 10px 30px ${m.color}15` }}
+                      style={{
+                        width: '100%',
+                        maxWidth: '420px',
+                        padding: '2rem',
+                        background: 'rgba(15,15,22,0.8)',
+                        border: `1px solid ${m.color}20`,
+                        borderRadius: '1.5rem',
+                        backdropFilter: 'blur(12px)',
+                        position: 'relative',
+                        marginLeft: isEven ? '0' : '50%',
+                        marginRight: isEven ? '50%' : '0',
+                      }}
+                      className="timeline-card"
+                    >
+                      {/* Connector Line (Desktop) */}
+                      <motion.div 
+                        initial={{ width: 0 }}
+                        whileInView={{ width: '50px' }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.6 }}
                         style={{
                           position: 'absolute',
-                          inset: '-8px',
-                          border: `2px solid ${m.color}`,
-                          borderRadius: '50%',
-                          pointerEvents: 'none',
-                        }}
-                      />
-                    )}
-                  </div>
+                          top: '50%',
+                          [isEven ? 'right' : 'left']: '-50px',
+                          height: '2px',
+                          background: `linear-gradient(to ${isEven ? 'left' : 'right'}, ${m.color}40, transparent)`,
+                          display: 'none',
+                          transformOrigin: isEven ? 'right' : 'left'
+                        }} className="md:block" />
 
-                  {/* Content card */}
-                  <motion.div
-                    whileHover={{ x: 4 }}
-                    style={{
-                      flex: 1,
-                      padding: '1.25rem 1.5rem',
-                      background: 'rgba(15,15,22,0.7)',
-                      border: `1px solid ${m.color}20`,
-                      borderRadius: '1rem',
-                      backdropFilter: 'blur(8px)',
-                      transition: 'transform 0.2s',
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
-                      <span style={{
-                        fontSize: '0.68rem',
-                        fontWeight: 800,
-                        letterSpacing: '0.12em',
-                        textTransform: 'uppercase',
-                        color: m.color,
-                        background: `${m.color}15`,
-                        padding: '0.2rem 0.65rem',
-                        borderRadius: '999px',
-                        border: `1px solid ${m.color}30`,
-                      }}>
-                        {m.year}
-                      </span>
-                      <h3 style={{
-                        fontSize: '0.95rem',
-                        fontWeight: 700,
-                        color: '#f1f5f9',
-                        fontFamily: 'Outfit, sans-serif',
-                      }}>
-                        {m.title}
-                      </h3>
-                    </div>
-                    <p style={{ fontSize: '0.82rem', color: '#64748b', lineHeight: 1.65 }}>
-                      {m.desc}
-                    </p>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+                        <div style={{
+                          width: '48px',
+                          height: '48px',
+                          borderRadius: '12px',
+                          background: `${m.color}15`,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          color: m.color,
+                          border: `1px solid ${m.color}30`
+                        }}>
+                          <Icon size={24} />
+                        </div>
+                        <div>
+                          <span style={{
+                            fontSize: '0.75rem',
+                            fontWeight: 800,
+                            color: m.color,
+                            letterSpacing: '0.1em',
+                            textTransform: 'uppercase'
+                          }}>{m.year}</span>
+                          <h3 style={{ fontSize: '1.1rem', color: '#f1f5f9' }}>{m.title}</h3>
+                        </div>
+                      </div>
+                      <p style={{ fontSize: '0.9rem', color: '#94a3b8', lineHeight: 1.6 }}>
+                        {m.desc}
+                      </p>
+                    </motion.div>
                   </motion.div>
-                </motion.div>
+                </div>
               );
             })}
           </div>
         </div>
       </div>
+
+      <style dangerouslySetInnerHTML={{ __html: `
+        @media (max-width: 767px) {
+          .timeline-card {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+          }
+        }
+      `}} />
     </section>
   );
 };
 
+
 export default Journey;
+
