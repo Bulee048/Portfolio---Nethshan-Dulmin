@@ -37,13 +37,6 @@ const skillGroups = [
     border: "rgba(239,68,68,0.3)",
     skills: ["Git", "GitHub", "Docker", "Linux/Unix", "Figma", "XAMPP", "Apache Tomcat", "Vite"],
   },
-  {
-    label: "Hardware & IoT",
-    color: "#06b6d4",
-    glow: "rgba(6,182,212,0.15)",
-    border: "rgba(6,182,212,0.3)",
-    skills: ["ESP32", "Neo-6M GPS", "Bash"],
-  },
 ];
 
 const Skills = () => {
