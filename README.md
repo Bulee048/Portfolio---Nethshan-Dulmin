@@ -90,7 +90,7 @@ This project is optimized for deployment on **Vercel** or **Netlify**.
 
 **Nethshan Dulmin**
 - GitHub: [@Bulee048](https://github.com/Bulee048)
-- LinkedIn: [Your Profile Link](#)
+- LinkedIn: www.linkedin.com/in/nethshan-dulmin-bulegoda-003589268
 
 ---
 
