@@ -2,7 +2,7 @@
 
 A modern, high-performance developer portfolio built with **React**, **Vite**, and **Framer Motion**. This project showcases my technical skills, professional experience, and academic background with smooth animations and a premium dark-themed UI.
 
-🔗 **Live Demo:** [Coming Soon](#)
+🔗 **Live Demo:** https://portfolio-nethshan-dulmin.vercel.app/
 
 ---
 
